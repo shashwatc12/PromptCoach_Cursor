@@ -1,3 +1,4 @@
+// Test CI/CD Workflow - Main Page
 import ProtectedLayout from '../components/ProtectedLayout';
 import Header from '../components/Header';
 import SupabaseTest from '../components/SupabaseTest';
