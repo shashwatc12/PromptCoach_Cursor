@@ -1,4 +1,4 @@
-# Prompt Enhancer
+# PromptCoach
 
 A Next.js application for enhancing AI prompts with Supabase authentication and modern UI.
 
@@ -30,8 +30,8 @@ A Next.js application for enhancing AI prompts with Supabase authentication and 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/shashwatc12/prompt-enhancer.git
-cd prompt-enhancer
+git clone https://github.com/shashwatc12/PromptCoach_Cursor.git
+cd PromptCoach_Cursor
 ```
 
 2. Install dependencies:
