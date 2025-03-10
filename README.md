@@ -1,43 +1,64 @@
-# Prompt Enhancer App
+# Prompt Enhancer
 
-A Next.js application for enhancing AI prompts with Supabase authentication.
+A Next.js application for enhancing AI prompts with Supabase authentication and modern UI.
 
 ## Features
 
-- Google Authentication with Supabase
-- Modern UI with Tailwind CSS
-- Fully typed with TypeScript
-- Responsive design
-- Secure authentication flow with PKCE
+- 🔐 Google Authentication with Supabase
+- 🎨 Modern UI with Tailwind CSS
+- 📝 Prompt enhancement capabilities
+- 🔄 Real-time updates
+- 🛡️ Protected routes
+- 💻 Fully responsive design
+- ⚡ Fast and optimized performance
+- 🔍 Type-safe with TypeScript
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Supabase](https://supabase.com/) - Authentication & Database
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
 
 ## Prerequisites
 
 - Node.js 16+ and npm
 - Supabase account
-- Google Cloud Console project with OAuth 2.0 credentials
+- Google OAuth credentials
 
-## Environment Variables
+## Getting Started
 
-Create a `.env.local` file with the following variables:
-
+1. Clone the repository:
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+git clone https://github.com/shashwatc12/prompt-enhancer.git
+cd prompt-enhancer
 ```
 
-## Development
-
-1. Install dependencies:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Run the development server:
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+Then edit `.env.local` with your Supabase credentials.
+
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000)
+5. Open [http://localhost:3000](http://localhost:3000)
+
+## Environment Variables
+
+Create a `.env.local` file with:
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
 ## Deployment
 
@@ -60,14 +81,14 @@ https://your-domain.vercel.app
 https://your-domain.vercel.app/auth/callback
 ```
 
-3. Update Google OAuth settings with the production callback URL:
-```
-https://[YOUR_PROJECT_REF].supabase.co/auth/v1/callback
-```
+## Contributing
 
-## Built With
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [Next.js](https://nextjs.org/)
-- [Supabase](https://supabase.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [TypeScript](https://www.typescriptlang.org/) 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+[shashwatc12](https://github.com/shashwatc12) 
