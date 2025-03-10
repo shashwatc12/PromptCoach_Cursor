@@ -7,18 +7,24 @@ export default function AuthCallback() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const { error: queryError, error_description } = router.query;
+    const handleCallback = async () => {
+      const { error: queryError, error_description } = router.query;
 
-    if (queryError || error_description) {
-      setError(error_description as string || 'Authentication failed');
-      setTimeout(() => router.push('/'), 3000);
-      return;
+      if (queryError || error_description) {
+        setError(error_description as string || 'Authentication failed');
+        setTimeout(() => router.push('/login'), 3000);
+        return;
+      }
+
+      // The PKCE flow will be automatically handled by the Supabase client
+      // We just need to redirect back to the home page
+      router.push('/');
+    };
+
+    if (router.isReady) {
+      handleCallback();
     }
-
-    // The PKCE flow will be automatically handled by the Supabase client
-    // We just need to redirect back to the home page
-    router.push('/');
-  }, [router.query]);
+  }, [router, router.isReady, router.query]);
 
   if (error) {
     return (

@@ -58,7 +58,7 @@ export default function PromptEnhancer() {
               Prompt Enhancer
             </h2>
             <p className="mt-1 text-sm text-gray-500">
-              Welcome, {user.displayName}
+              Welcome, {user.email}
             </p>
           </div>
           <button
