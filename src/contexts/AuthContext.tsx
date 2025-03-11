@@ -45,6 +45,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         provider: 'google',
         options: {
           redirectTo: typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : undefined,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
+          skipBrowserRedirect: false,
         },
       });
       if (error) throw error;

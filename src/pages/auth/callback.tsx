@@ -8,23 +8,46 @@ export default function AuthCallback() {
 
   useEffect(() => {
     const handleCallback = async () => {
-      const { error: queryError, error_description } = router.query;
+      try {
+        const { error: queryError, error_description } = router.query;
 
-      if (queryError || error_description) {
-        setError(error_description as string || 'Authentication failed');
+        if (queryError || error_description) {
+          console.error('Auth error:', { queryError, error_description });
+          setError(error_description as string || 'Authentication failed');
+          setTimeout(() => router.push('/login'), 3000);
+          return;
+        }
+
+        // Get the session to ensure the auth was successful
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        
+        if (sessionError) {
+          console.error('Session error:', sessionError);
+          setError('Failed to get session');
+          setTimeout(() => router.push('/login'), 3000);
+          return;
+        }
+
+        if (!session) {
+          console.error('No session found');
+          setError('No session found');
+          setTimeout(() => router.push('/login'), 3000);
+          return;
+        }
+
+        // Successfully authenticated
+        router.push('/');
+      } catch (err) {
+        console.error('Callback error:', err);
+        setError('An unexpected error occurred');
         setTimeout(() => router.push('/login'), 3000);
-        return;
       }
-
-      // The PKCE flow will be automatically handled by the Supabase client
-      // We just need to redirect back to the home page
-      router.push('/');
     };
 
     if (router.isReady) {
       handleCallback();
     }
-  }, [router, router.isReady, router.query]);
+  }, [router, router.isReady]);
 
   if (error) {
     return (
@@ -32,7 +55,7 @@ export default function AuthCallback() {
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-4 text-red-600">Authentication Error</h2>
           <p className="text-gray-600 mb-4">{error}</p>
-          <p className="text-sm text-gray-500">Redirecting to home page...</p>
+          <p className="text-sm text-gray-500">Redirecting to login page...</p>
         </div>
       </div>
     );
